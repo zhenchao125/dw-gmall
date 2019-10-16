@@ -46,7 +46,7 @@ public class AppMain {
             int flag = rand.nextInt(2);
 
             switch (flag) {
-                case (0):
+                case (0):  // 启动日志
                     //应用启动
                     AppStart appStart = generateStart();
                     String jsonString = JSON.toJSONString(appStart);
@@ -55,7 +55,7 @@ public class AppMain {
                     logger.info(jsonString);
                     break;
 
-                case (1):
+                case (1): // 事件日志
 
                     JSONObject json = new JSONObject();
 
