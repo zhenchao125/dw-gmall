@@ -109,7 +109,7 @@ import_payment_info(){
     payment_type,
     payment_time
   from payment_info
-  where DATE_FORMAT(payment_time,'%Y-%m-%d')='$db_date'"
+  where DATE_FORMAT(payment_time,'%Y-%m-%d')='$do_date'"
 }
 
 table=$1
