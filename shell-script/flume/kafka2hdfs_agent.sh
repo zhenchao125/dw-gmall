@@ -7,7 +7,7 @@ case $1 in
 
     ;;
     stop)
-        echo ========= $host =========
+        echo ========= hadoop104 =========
         ssh hadoop104 "ps -ef | awk '/kafka2hdfs.conf/ && !/awk/{print \$2}'|xargs kill -9"
     ;;
 
