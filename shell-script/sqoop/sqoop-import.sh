@@ -3,7 +3,7 @@
 
 
 if [[ -n $2 ]]; then
-    do_date=$1
+    do_date=$2
 else
     do_date=`date -d '-1 day' +%F`
 fi
@@ -21,11 +21,10 @@ function import_data() {
     --username root \
     --password aaaaaa \
     --query "$sql and \$CONDITIONS" \
-    --num-mappers 2 \
-    --split-by id \
+    --num-mappers 1 \
     --target-dir /origin_data/gmall/db/${table}/${do_date} \
     --delete-target-dir \
-    --fields-terminated-by \t
+    --fields-terminated-by '\t'
 }
 
 # 导入订单表
@@ -41,7 +40,7 @@ function import_order_info() {
                                 create_time,
                                 operate_time
                              from order_info
-                             where (date_format(create_time, '%y-%m-%d')='$do_date' or date_format(create_time, '%y-%m-%d')='$do_date')"
+                             where (date_format(create_time, '%Y-%m-%d')='$do_date' or date_format(operate_time, '%Y-%m-%d')='$do_date')"
 }
 
 # order_detail 表
@@ -58,7 +57,7 @@ function import_order_detail() {
                                 oi.create_time
                              from order_detail od join order_info oi \
                              on od.order_id=oi.id
-                             where date_format(oi.create_time, '%y-%m-%d')='$do_date'"
+                             where date_format(oi.create_time, '%Y-%m-%d')='$do_date'"
 }
 
 # user_info
