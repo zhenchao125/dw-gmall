@@ -35,7 +35,8 @@ public class LogETLInterceptor implements Interceptor {
         byte[] body = event.getBody();
         String log = new String(body, Charset.forName("utf-8"));
 
-        // 2. 过滤日志, 并向 header 中赋值. 不同的日志, 不同的过滤方法
+        // 2. 过滤日志, 并向 header 中赋值. 不同的过滤日志, 并向 header 中赋值.
+        // 不同的日志, 不同的过滤方法日志, 不同的过滤方法
         if (log.contains("\"en\":\"start\"")) {  // 2.1 启动日志
             if (LogUtil.validateStart(log)) {
                 return event;

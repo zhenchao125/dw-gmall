@@ -32,7 +32,9 @@ select
     ud.lng,
     ud.lat,
     '$do_date'
-from dws_uv_detail_day ud left join dws_new_mid_day nm on ud.mid_id=nm.mid_id
+from dws_uv_detail_day ud
+left join dws_new_mid_day nm
+on ud.mid_id=nm.mid_id
 where ud.dt='$do_date' and nm.mid_id is null
 
 insert into table ads_new_mid_count

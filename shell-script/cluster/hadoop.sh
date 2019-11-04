@@ -19,7 +19,9 @@ case $1 in
     ;;
 
     *)
-        echo 你使用脚本的姿势不对, 启动 hadoop 集群请添加参数 start, 关闭 hadoop 集群请添加参数 stop
+        echo "你使用脚本的姿势不对"
+        echo "  hadoop.sh start  启动 hadoop 集群"
+        echo "  hadoop.sh stop   停止 hadoop 集群"
     ;;
 
  esac

@@ -34,7 +34,7 @@ select
     event_name,
     event_json,
     base_analizer(line,'st') as server_time
-from ${db}.ods_event_log lateral view flat_analizer(base_analizer(line,'et')) tem_flat as event_name,event_json
+from ${db}.ods_event_log lateral view flat_analizer(base_analizer(line,'et')) tmp_flat as event_name,event_json
 where dt='$do_date'  and base_analizer(line,'et')<>'';
 
 "
