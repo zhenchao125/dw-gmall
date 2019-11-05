@@ -22,6 +22,7 @@ from(
         mid_id
     from dws_uv_detail_day
     group by mid_id
+    where dt<=$do_date
     having count(*)=1
     and max(dt)<=date_add('$do_date', -7)
 ) t1

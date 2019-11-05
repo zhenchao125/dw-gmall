@@ -1,6 +1,9 @@
 package com.atguigu.appclient;
 
 import java.io.UnsupportedEncodingException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Random;
 
 import com.alibaba.fastjson.JSON;
@@ -15,6 +18,7 @@ import org.slf4j.LoggerFactory;
  */
 public class AppMain {
 
+
     private final static Logger logger = LoggerFactory.getLogger(AppMain.class);
     private static Random rand = new Random();
 
@@ -26,20 +30,22 @@ public class AppMain {
 
     // 商品id
     private static int s_goodsid = 0;
+    private static String dayString;
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ParseException {
 
-        // 参数一：控制发送每条的延时时间，默认是0
-        Long delay = args.length > 0 ? Long.parseLong(args[0]) : 0L;
 
-        // 参数二：循环遍历次数
+        // 参数一：控制发送每条的延时时间，默认是10
+        Long delay = args.length > 0 ? Long.parseLong(args[0]) : 10L;
+
+        // 参数二：循环遍历次数 生成的日志条数
         int loop_len = args.length > 1 ? Integer.parseInt(args[1]) : 1000;
 
         // 生成数据
         generateLog(delay, loop_len);
     }
 
-    private static void generateLog(Long delay, int loop_len) {
+    private static void generateLog(Long delay, int loop_len) throws ParseException {
 
         for (int i = 0; i < loop_len; i++) {
 
@@ -132,6 +138,7 @@ public class AppMain {
                     }
 
                     //时间
+
                     long millis = System.currentTimeMillis();
 
                     //控制台打印
