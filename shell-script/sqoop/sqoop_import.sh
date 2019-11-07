@@ -25,7 +25,9 @@ function import_data() {
     # --split-by id
     --target-dir /origin_data/gmall/db/${table}/${do_date} \
     --delete-target-dir \
-    --fields-terminated-by '\t'
+    --fields-terminated-by '\t' \
+    --null-string '\\N' \
+    --null-non-string '\\N'
 }
 
 # 导入订单表
@@ -56,7 +58,7 @@ function import_order_detail() {
                                 order_price,
                                 sku_num,
                                 oi.create_time
-                             from order_detail od join order_info oi
+                             from order_detail od join order_info oi \
                              on od.order_id=oi.id
                              where date_format(oi.create_time, '%Y-%m-%d')='$do_date'"
 }
@@ -156,3 +158,4 @@ case ${table} in
         import_payment_info
     ;;
 esac
+
