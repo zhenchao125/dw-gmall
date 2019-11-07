@@ -22,6 +22,7 @@ function import_data() {
     --password aaaaaa \
     --query "$sql and \$CONDITIONS" \
     --num-mappers 1 \
+    # --split-by id
     --target-dir /origin_data/gmall/db/${table}/${do_date} \
     --delete-target-dir \
     --fields-terminated-by '\t'
@@ -55,7 +56,7 @@ function import_order_detail() {
                                 order_price,
                                 sku_num,
                                 oi.create_time
-                             from order_detail od join order_info oi \
+                             from order_detail od join order_info oi
                              on od.order_id=oi.id
                              where date_format(oi.create_time, '%Y-%m-%d')='$do_date'"
 }
