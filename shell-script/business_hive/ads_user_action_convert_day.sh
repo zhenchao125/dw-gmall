@@ -24,7 +24,7 @@ from(
   select
     '$do_date' do_dt,
     sum(if(order_count>0,1,0)) order_u_count,  -- 下单人数
-    sum(if(payment_count>0,1,0)) payment_u_count  -- 下单人数
+    sum(if(payment_count>0,1,0)) payment_u_count  -- 支付人数
   from dws_user_action
   where dt='$do_date'
 ) tmp join ads_uv_count auc

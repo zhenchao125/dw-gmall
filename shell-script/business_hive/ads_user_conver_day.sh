@@ -18,13 +18,13 @@ select
   sum(day_count),
   sum(new_mid_count),
   sum(new_mid_count) / sum(day_count) * 100
-from
-(select
+from(
+select
   0 day_count,
   new_mid_count
 from ads_new_mid_count
 where create_date='$do_date'
-union
+union all
 select
   day_count,
   0 new_mid_count
