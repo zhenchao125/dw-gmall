@@ -7,11 +7,6 @@ if [[ $# == 0 ]]; then
     exit
 fi
 
-if [[ ! -e $1 ]]; then
-    echo '你要分发的文件不存在'
-    exit
-fi
-
 # 2. 获取要分发的文件或者目录的名字
 p1=$1
 fileName=`basename ${p1}`

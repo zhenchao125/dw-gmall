@@ -12,6 +12,7 @@ fi
 
 sql="
 use gmall;
+
 insert overwrite table dwd_order_info_his_tmp
 select -- 新增和改变
     id,
@@ -43,7 +44,7 @@ from dwd_order_info_his oh
 left join ( -- 左边的全部保留
   select * from dwd_order_info where dt='$do_date'
 ) oi
-on oh.id=oi.id and oh.end_date='9999-99-99';  -- his.end_date='9999-99-99'  这样的订单才有可能需要修改闭链事件
+on oh.id=oi.id and oh.end_date='9999-99-99';  -- his.end_date='9999-99-99'  这样的订单才有可能需要修改闭链时间
 
 insert overwrite table dwd_order_info_his
 select * from dwd_order_info_his_tmp;

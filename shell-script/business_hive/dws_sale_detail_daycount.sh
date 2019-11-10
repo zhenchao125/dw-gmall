@@ -13,7 +13,6 @@ fi
 sql="
 use gmall;
 -- 每天每个用户购买每个产品的次数
-
 with tmp_detail as(
 select
   user_id,
@@ -32,7 +31,7 @@ select
   tmp_detail.user_id,
   tmp_detail.sku_id,
   dui.gender,
-  months_between('2019-02-10', dui.birthday)/12  age, -- 方便获得新分析不同年龄段的人的购买行为
+  months_between('$do_date', dui.birthday)/12  age, -- 方便获得新分析不同年龄段的人的购买行为
   dui.user_level,
   price,
   sku_name,
